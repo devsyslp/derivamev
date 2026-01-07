@@ -1,0 +1,45 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "asset",
+      "value": {
+        "Value": {
+          "defaultValue": "ConexionStringDB",
+          "isExpression": false
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "resource": "asset",
+      "value": {
+        "Value": {
+          "defaultValue": "Servidor_Mail",
+          "isExpression": false
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "resource": "asset",
+      "value": {
+        "Value": {
+          "defaultValue": "Receptores_De_Informes_La_Mev",
+          "isExpression": false
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "resource": "asset",
+      "value": {
+        "Value": {
+          "defaultValue": "LimiteEjecucionDerivaMev",
+          "isExpression": false
+        }
+      },
+      "metadata": {}
+    }
+  ]
+}

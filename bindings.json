@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "resources": [
+    {
+      "resource": "asset",
+      "metadata": {
+        "Value": {
+          "defaultValue": "ConexionStringDB",
+          "isExpression": false
+        }
+      }
+    },
+    {
+      "resource": "asset",
+      "metadata": {
+        "Value": {
+          "defaultValue": "Servidor_Mail",
+          "isExpression": false
+        }
+      }
+    },
+    {
+      "resource": "asset",
+      "metadata": {
+        "Value": {
+          "defaultValue": "Receptores_De_Informes_La_Mev",
+          "isExpression": false
+        }
+      }
+    },
+    {
+      "resource": "asset",
+      "metadata": {
+        "Value": {
+          "defaultValue": "LimiteEjecucionDerivaMev",
+          "isExpression": false
+        }
+      }
+    }
+  ]
+}
