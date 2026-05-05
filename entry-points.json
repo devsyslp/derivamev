@@ -1,0 +1,21 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "da393902-650a-4288-930b-8fa44a97686d",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "RutaCarpetaBase": {
+            "type": "string",
+            "x-default-expression": "\"C:\\Registros_RobotMEV\\\"",
+            "default": "C:\\Registros_RobotMEV\\"
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}

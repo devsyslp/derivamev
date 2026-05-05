@@ -1,14 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.RutaCarpetaBase="C:\Registros_RobotMEV\" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:m="clr-namespace:Mavenick;assembly=AutoCloseMsgBox" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.RutaCarpetaBase="C:\Registros_RobotMEV\" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="RutaCarpetaBase" Type="InArgument(x:String)" />
   </x:Members>
-  <mva:VisualBasic.Settings>
+  <VisualBasic.Settings>
     <x:Null />
-  </mva:VisualBasic.Settings>
+  </VisualBasic.Settings>
   <sap:VirtualizedContainerService.HintSize>1514,890</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="46">
+    <scg:List x:TypeArguments="x:String" Capacity="92">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -55,6 +55,12 @@
       <x:String>UiPath.Activities.System.Workflow.Business</x:String>
       <x:String>System.Management.Automation</x:String>
       <x:String>System.Dynamic</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -95,15 +101,39 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Diagrama de flujo - Main" sap:VirtualizedContainerService.HintSize="664,825" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="Diagrama de flujo - Main" sap:VirtualizedContainerService.HintSize="600,496" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="TbRegistroDetallado" />
       <Variable x:TypeArguments="sd:DataTable" Name="TbReceptoresDeMev" />
       <Variable x:TypeArguments="scg:ICollection(x:String)" Default="[new List(of String)]" Name="ListaDeErrores" />
-      <Variable x:TypeArguments="x:String" Default="lprecupero.com.ar" Name="ServidorMail" />
-      <Variable x:TypeArguments="sd:DataTable" Name="TbRegistro" />
+      <Variable x:TypeArguments="x:String" Name="ServidorMailSalida" />
       <Variable x:TypeArguments="sd:DataTable" Name="TbMailsPorCasilla" />
       <Variable x:TypeArguments="x:String" Name="NombreDeRegistro" />
       <Variable x:TypeArguments="x:Boolean" Default="True" Name="ExisteRuta" />
@@ -111,13 +141,16 @@
       <Variable x:TypeArguments="sd:DataTable" Name="TbUltimoRegistro" />
       <Variable x:TypeArguments="sd:DataTable" Name="TbMailsSinDatos" />
       <Variable x:TypeArguments="scg:ICollection(x:String)" Default="[new List(of String)]" Name="ListCasillasVacias" />
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailspruebaImap" />
+      <Variable x:TypeArguments="x:String" Name="ServidorMailEntrada" />
+      <Variable x:TypeArguments="x:Int32" Name="PuertoMailEntrada" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">20,12.5</av:Point>
-        <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">80,50 160,50</av:PointCollection>
+        <av:Size x:Key="ShapeSize">50,50</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">70,37.5 100,37.5 100,45 200,45</av:PointCollection>
         <x:Double x:Key="Height">788</x:Double>
         <x:Double x:Key="Width">630</x:Double>
       </scg:Dictionary>
@@ -125,15 +158,15 @@
     <Flowchart.StartNode>
       <x:Reference>__ReferenceID15</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID3">
+    <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">380,267.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,25</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">380,280 320,280</av:PointCollection>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">380,302.5 350,302.5 350,300 295,300</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="TryCatch - Get Mails Receptores De MEV" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="TryCatch - Get Mails Receptores De MEV" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EjecutarConsulta workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="EjecutarConsulta.xaml">
             <ui:InvokeWorkflowFile.Arguments>
@@ -174,21 +207,21 @@
         <FlowStep x:Name="__ReferenceID2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">120,267.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,25</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">220,292.5 220,336.5</av:PointCollection>
+              <av:Point x:Key="ShapeLocation">185,265</av:Point>
+              <av:Size x:Key="ShapeSize">110,70</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">240,335 240,370</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Secuencia - Obtener Servidor de mail" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Secuencia - Obtener Servidor de mail" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Default="webmail.cartasur.com.ar" Name="ServidorDefault" />
+              <Variable x:TypeArguments="x:String" Name="variable1" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="TryCatch - Get ServidorMail" sap:VirtualizedContainerService.HintSize="438,288" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch DisplayName="TryCatch - Get Servidor entrada Mail" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="TryCatch_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -196,9 +229,9 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Servidor_Mail" DisplayName="Obtener activo - Servidor WebMail" sap:VirtualizedContainerService.HintSize="268,25" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ServidorMailEntrada" DisplayName="Obtener activo - Servidor WebMail" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
                   <ui:GetRobotAsset.Value>
-                    <OutArgument x:TypeArguments="x:String">[ServidorMail]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String">[ServidorMailEntrada]</OutArgument>
                   </ui:GetRobotAsset.Value>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -209,56 +242,91 @@
                 </ui:GetRobotAsset>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_19">
+                  <ActivityAction x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="ActivityAction`1_1">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <AddToCollection x:TypeArguments="x:String" Collection="[ListaDeErrores]" DisplayName="Añadir a colección" sap:VirtualizedContainerService.HintSize="416,45" sap2010:WorkflowViewState.IdRef="AddToCollection`1_12" Item="Ocurrio un error al obtener configuracion de mail" />
+                    </Sequence>
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+              <TryCatch.Finally>
+                <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_62">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </TryCatch.Finally>
+            </TryCatch>
+            <TryCatch DisplayName="TryCatch - Get Puerto De Entrada" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="TryCatch_20">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch.Try>
+                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PuertoImapEntrada" DisplayName="Obtener activo - puerto WebMail" sap:VirtualizedContainerService.HintSize="450,140" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
+                  <ui:GetRobotAsset.Value>
+                    <OutArgument x:TypeArguments="x:Int32">[PuertoMailEntrada]</OutArgument>
+                  </ui:GetRobotAsset.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:GetRobotAsset>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_20">
                   <ActivityAction x:TypeArguments="s:Exception">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Secuencia - Catch Obtener ServidorMail" sap:VirtualizedContainerService.HintSize="496,318" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_65">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Asignar - Servidor default" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[ServidorMail]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[ServidorDefault]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <ui:LogMessage DisplayName="Registrar mensaje - error Get ServidorMail" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;Error al obtener el servidor de mail. Se asignó el servidor de mail por default. (&quot;+ ServidorDefault +&quot;). Detalle de error: &quot; + exception.Message]" />
+                      <AddToCollection x:TypeArguments="x:String" Collection="[ListaDeErrores]" DisplayName="Añadir a colección" sap:VirtualizedContainerService.HintSize="416,45" sap2010:WorkflowViewState.IdRef="AddToCollection`1_13" Item="Ocurrio un error al obtener configuracion de mail" />
                     </Sequence>
                   </ActivityAction>
                 </Catch>
               </TryCatch.Catches>
+              <TryCatch.Finally>
+                <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </TryCatch.Finally>
             </TryCatch>
-            <Assign DisplayName="Asignar - Servidor mail is null or empty" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_2">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[ServidorMail]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[String.Concat(IIf(String.IsNullOrEmpty(ServidorMail),ServidorDefault,ServidorMail))]</InArgument>
-              </Assign.Value>
-            </Assign>
           </Sequence>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID1" Condition="[ListaDeErrores.Count&gt;0]" DisplayName="Ocurrio un error?" sap:VirtualizedContainerService.HintSize="96,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+            <FlowDecision x:Name="__ReferenceID1" Condition="[ListaDeErrores.Count&gt;0]" DisplayName="Ocurrio un error?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <av:Point x:Key="ShapeLocation">172,336.5</av:Point>
-                  <av:Size x:Key="ShapeSize">96,87</av:Size>
-                  <av:PointCollection x:Key="FalseConnector">268,380 360,380</av:PointCollection>
-                  <av:PointCollection x:Key="TrueConnector">172,380 110,380 110,474.5</av:PointCollection>
+                  <av:Point x:Key="ShapeLocation">210,370</av:Point>
+                  <av:Size x:Key="ShapeSize">60,60</av:Size>
+                  <av:PointCollection x:Key="FalseConnector">270,400 300,400 300,402.5 360,402.5</av:PointCollection>
+                  <av:PointCollection x:Key="TrueConnector">210,400 65,400 65,474.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.True>
@@ -266,21 +334,21 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">10,474.5</av:Point>
-                      <av:Size x:Key="ShapeSize">200,25</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">110,499.5 110,527</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">65,544.5 60,544.5 60,555</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Registrar mensaje - Log inicio registro" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Trace" Message="[&quot;Inició el proceso para la generacion de archivos de registro.&quot;]" />
+                  <ui:LogMessage DisplayName="Registrar mensaje - Log inicio registro" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Trace" Message="[&quot;Inició el proceso para la generacion de archivos de registro.&quot;]" />
                   <FlowStep.Next>
                     <FlowStep x:Name="__ReferenceID8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">10,527</av:Point>
-                          <av:Size x:Key="ShapeSize">200,25</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">110,552 110,587.5</av:PointCollection>
+                          <av:Point x:Key="ShapeLocation">5,555</av:Point>
+                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">115,590 60,590 60,655</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Secuencia - agregar datos -Registro" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                      <Sequence DisplayName="Secuencia - agregar datos -Registro" sap:VirtualizedContainerService.HintSize="562,1429" sap2010:WorkflowViewState.IdRef="Sequence_15">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:Int32" Default="0" Name="CntTotalMails" />
                           <Variable x:TypeArguments="x:String" Name="CntMailsSinDatos" />
@@ -291,13 +359,13 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[TbRegistro]" DisplayName="Para cada fila de la tabla de datos -  Obtener cantidad total de derivaciones" sap:VirtualizedContainerService.HintSize="592,25" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Para cada fila de la tabla de datos -  Obtener cantidad total de derivaciones" sap:VirtualizedContainerService.HintSize="528,57" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                           <ui:ForEachRow.Body>
                             <ActivityAction x:TypeArguments="sd:DataRow">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Cuerpo Para cada row en tbregistro" sap:VirtualizedContainerService.HintSize="496,255" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                              <Sequence DisplayName="Cuerpo Para cada row en tbregistro" sap:VirtualizedContainerService.HintSize="494,283" sap2010:WorkflowViewState.IdRef="Sequence_16">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="x:String" Name="CantidadDerivado" />
                                 </Sequence.Variables>
@@ -306,7 +374,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Cantidad" DisplayName="Obtener elemento de fila - Cantidad derivados" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="GetRowItem_6" Row="[CurrentRow]">
+                                <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Cantidad" DisplayName="Obtener elemento de fila - Cantidad derivados" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="GetRowItem_6" Row="[CurrentRow]">
                                   <ui:GetRowItem.Value>
                                     <OutArgument x:TypeArguments="x:String">[CantidadDerivado]</OutArgument>
                                   </ui:GetRowItem.Value>
@@ -317,7 +385,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:GetRowItem>
-                                <Assign DisplayName="Asignar - cantidad total de mails" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                <Assign DisplayName="Asignar - cantidad total de mails" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_7">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Int32">[CntTotalMails]</OutArgument>
                                   </Assign.To>
@@ -335,26 +403,38 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:ForEachRow>
-                        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[TbRegistro]" DisplayName="Buscar tabla de datos - Obtener cantidad de mails sin datos" sap:VirtualizedContainerService.HintSize="592,25" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Mail" LookupValue="analisislegales@cartasur.com.ar" TargetColumnName="Cantidad">
+                        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Buscar tabla de datos - Obtener cantidad de mails sin datos" sap:VirtualizedContainerService.HintSize="528,57" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Mail" LookupValue="analisislegales@cartasur.com.ar" TargetColumnName="Cantidad">
                           <ui:LookupDataTable.CellValue>
                             <OutArgument x:TypeArguments="x:String">[CntMailsSinDatos]</OutArgument>
                           </ui:LookupDataTable.CellValue>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
                         </ui:LookupDataTable>
-                        <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="592,81" sap2010:WorkflowViewState.IdRef="Assign_19">
+                        <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="528,57" sap2010:WorkflowViewState.IdRef="Assign_19">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[RutaUltimoRegistro]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:String">[Directory.GetFiles(RutaCarpetaBase + "UltimoRegistro","*.*",SearchOption.TopDirectoryOnly)(0)]</InArgument>
                           </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Ámbito de aplicación de Excel" sap:VirtualizedContainerService.HintSize="592,1760" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[RutaUltimoRegistro]">
+                        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Ámbito de aplicación de Excel" sap:VirtualizedContainerService.HintSize="528,1094" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[RutaUltimoRegistro]">
                           <ui:ExcelApplicationScope.Body>
                             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="558,1650" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                              <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="484,952" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="sd:DataTable" Name="TbCasillasDestino" />
                                 </Sequence.Variables>
@@ -363,13 +443,13 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EjecutarConsulta workflow" sap:VirtualizedContainerService.HintSize="496,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="EjecutarConsulta.xaml">
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EjecutarConsulta workflow" sap:VirtualizedContainerService.HintSize="450,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="EjecutarConsulta.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
                                     <InArgument x:TypeArguments="x:String" x:Key="Query">PA_RB_GET_DESTINOS_DERIVAMEV</InArgument>
                                     <OutArgument x:TypeArguments="sd:DataTable" x:Key="TablaSalida">[TbCasillasDestino]</OutArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
-                                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[TbRegistro]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="496,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_3" JoinType="Left" OutputDataTable="[TbCasillasDestino]">
+                                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="JoinDataTables_3" JoinType="Left" OutputDataTable="[TbCasillasDestino]">
                                   <ui:JoinDataTables.Arguments>
                                     <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
                                       <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -383,7 +463,7 @@
                                     </scg:List>
                                   </ui:JoinDataTables.Arguments>
                                 </ui:JoinDataTables>
-                                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[TbCasillasDestino]" DisplayName="Para cada fila de la tabla de datos" sap:VirtualizedContainerService.HintSize="496,25" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[TbCasillasDestino]" DisplayName="Para cada fila de la tabla de datos" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
                                   <ui:ForEachRow.Body>
                                     <ActivityAction x:TypeArguments="sd:DataRow">
                                       <ActivityAction.Argument>
@@ -399,36 +479,49 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:ForEachRow>
-                                <Sequence DisplayName="Secuencia - Agregar totales - Reporte" sap:VirtualizedContainerService.HintSize="496,452" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                <Sequence DisplayName="Secuencia - Agregar totales - Reporte" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - Salto de linea" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="AddDataRow_18" />
-                                  <Assign DisplayName="Asignar - MailsSinDatos" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(-1) {}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - Salto de linea" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="AddDataRow_18">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:AddDataRow>
+                                  <Assign DisplayName="Asignar - MailsSinDatos" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_18">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[CntMailsSinDatos]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
                                       <InArgument x:TypeArguments="x:String">[(IIf(string.IsNullOrEmpty(CntMailsSinDatos),"0",CntMailsSinDatos)).ToString()]</InArgument>
                                     </Assign.Value>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
                                   </Assign>
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Mails derivados&quot;,&quot;&quot;,CntTotalMails - Int32.Parse(CntMailsSinDatos)}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - Mails derivados" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="AddDataRow_19" />
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Mails sin datos&quot;,&quot;&quot;,CntMailsSinDatos}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - Mails sin datos" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="AddDataRow_20" />
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Total de mails&quot;,&quot;&quot;,CntTotalMails}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - total de mails" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="AddDataRow_21" />
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[new Object(){&quot;Mails derivados&quot;,&quot;&quot;,CntTotalMails - Int32.Parse(CntMailsSinDatos)}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - Mails derivados" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="AddDataRow_19" />
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Mails sin datos&quot;,&quot;&quot;,CntMailsSinDatos}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - Mails sin datos" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="AddDataRow_20" />
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[new Object(){&quot;Total de mails&quot;,&quot;&quot;,CntTotalMails}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - total de mails" sap:VirtualizedContainerService.HintSize="416,216" sap2010:WorkflowViewState.IdRef="AddDataRow_21" />
                                 </Sequence>
-                                <Sequence DisplayName="Secuencia - agregar errores" sap:VirtualizedContainerService.HintSize="496,266" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                <Sequence DisplayName="Secuencia - agregar errores" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_39">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - salto de linea - errores" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="AddDataRow_22" />
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Errores&quot;,&quot;&quot;,ListaDeErrores.Count}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - cant errores" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="AddDataRow_23" />
-                                  <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[new Object(-1){}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - salto de linea - errores" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="AddDataRow_22" />
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[new Object(){&quot;Errores&quot;,&quot;&quot;,ListaDeErrores.Count}]" DataTable="[TbCasillasDestino]" DisplayName="Añadir fila de datos - cant errores" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="AddDataRow_23" />
+                                  <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="CommentOut_3">
                                     <ui:CommentOut.Body>
                                       <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="514,440" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                         <sap:WorkflowViewStateService.ViewState>
@@ -448,8 +541,8 @@
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{err.ToString}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - añadir error" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="AddDataRow_24" />
-                                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - error" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="AddDataRow_25" />
+                                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{err.ToString}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - añadir error" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="AddDataRow_24" />
+                                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - error" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="AddDataRow_25" />
                                               </Sequence>
                                             </ActivityAction>
                                           </ui:ForEach.Body>
@@ -470,14 +563,14 @@
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:CommentOut>
                                 </Sequence>
-                                <ui:ExcelReadRange AddHeaders="True" DataTable="[TbUltimoRegistro]" DisplayName="Leer rango" sap:VirtualizedContainerService.HintSize="496,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="Registro">
+                                <ui:ExcelReadRange AddHeaders="True" DataTable="[TbUltimoRegistro]" DisplayName="Leer rango" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="Registro">
                                   <ui:ExcelReadRange.Range>
                                     <InArgument x:TypeArguments="x:String">
                                       <Literal x:TypeArguments="x:String" Value="" />
                                     </InArgument>
                                   </ui:ExcelReadRange.Range>
                                 </ui:ExcelReadRange>
-                                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[TbUltimoRegistro]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="496,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_4" JoinType="Left" OutputDataTable="[TbRegistro]">
+                                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[TbUltimoRegistro]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="JoinDataTables_4" JoinType="Left" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]">
                                   <ui:JoinDataTables.Arguments>
                                     <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
                                       <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -491,7 +584,7 @@
                                     </scg:List>
                                   </ui:JoinDataTables.Arguments>
                                 </ui:JoinDataTables>
-                                <ui:FilterDataTable DataTable="[TbRegistro]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="496,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[TbRegistro]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="450,195" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" SelectColumnsMode="Remove">
                                   <ui:FilterDataTable.Filters>
                                     <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                                       <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -504,7 +597,7 @@
                                     </scg:List>
                                   </ui:FilterDataTable.SelectColumns>
                                 </ui:FilterDataTable>
-                                <ui:RemoveDuplicateRows DataTable="[TbRegistro]" DisplayName="Quitar filas duplicadas" sap:VirtualizedContainerService.HintSize="496,25" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_2" OutputDataTable="[TbRegistro]" />
+                                <ui:RemoveDuplicateRows DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Quitar filas duplicadas" sap:VirtualizedContainerService.HintSize="450,104" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_2" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" />
                               </Sequence>
                             </ActivityAction>
                           </ui:ExcelApplicationScope.Body>
@@ -515,18 +608,18 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:ExcelApplicationScope>
-                        <ui:Delete ContinueOnError="True" DisplayName="Eliminar" sap:VirtualizedContainerService.HintSize="592,80" sap2010:WorkflowViewState.IdRef="Delete_11" Path="[RutaUltimoRegistro]" />
+                        <ui:Delete ContinueOnError="True" DisplayName="Eliminar" sap:VirtualizedContainerService.HintSize="518,104" sap2010:WorkflowViewState.IdRef="Delete_11" Path="[RutaUltimoRegistro]" />
                       </Sequence>
                       <FlowStep.Next>
                         <FlowStep x:Name="__ReferenceID9">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">10,587.5</av:Point>
-                              <av:Size x:Key="ShapeSize">200,25</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">110,612.5 110,634.5</av:PointCollection>
+                              <av:Point x:Key="ShapeLocation">5,655</av:Point>
+                              <av:Size x:Key="ShapeSize">110,70</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">60,725 60,735</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Secuencia - GenerarArchivos" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <Sequence DisplayName="Secuencia - GenerarArchivos" sap:VirtualizedContainerService.HintSize="518,2391" sap2010:WorkflowViewState.IdRef="Sequence_20">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:String" Name="RegistroTxt" />
                             </Sequence.Variables>
@@ -535,7 +628,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="809,81" sap2010:WorkflowViewState.IdRef="Assign_8">
+                            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="484,175" sap2010:WorkflowViewState.IdRef="Assign_8">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[NombreDeRegistro]</OutArgument>
                               </Assign.To>
@@ -543,13 +636,13 @@
                                 <InArgument x:TypeArguments="x:String">[string.Format("Registro derivaciones {0}",DateTime.Now.ToString("dd-MM-yyyy"))]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Ámbito de aplicación de Excel - generar archivo registro excel" sap:VirtualizedContainerService.HintSize="809,1479" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[NombreDeRegistro + &quot;.xlsx&quot;]">
+                            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Ámbito de aplicación de Excel - generar archivo registro excel" sap:VirtualizedContainerService.HintSize="484,1497" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[NombreDeRegistro + &quot;.xlsx&quot;]">
                               <ui:ExcelApplicationScope.Body>
                                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                   </ActivityAction.Argument>
-                                  <Sequence DisplayName="Hacer - ambio excel - generar archivo de registro" sap:VirtualizedContainerService.HintSize="775,1369" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                  <Sequence DisplayName="Hacer - ambio excel - generar archivo de registro" sap:VirtualizedContainerService.HintSize="450,1355" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                     <Sequence.Variables>
                                       <Variable x:TypeArguments="sd:DataTable" Name="TbErrores" />
                                       <Variable x:TypeArguments="x:String" Name="RegistroAnterior" />
@@ -560,8 +653,8 @@
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:BuildDataTable DataTable="[TbErrores]" DisplayName="Crear tabla de datos" sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_12" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Errores&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;8000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Para cada - Errores" sap:VirtualizedContainerService.HintSize="713,25" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[ListaDeErrores]">
+                                    <ui:BuildDataTable DataTable="[TbErrores]" DisplayName="Crear tabla de datos" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_12" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Errores&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;8000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Para cada - Errores" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[ListaDeErrores]">
                                       <ui:ForEach.Body>
                                         <ActivityAction x:TypeArguments="x:String">
                                           <ActivityAction.Argument>
@@ -602,7 +695,7 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:ForEach>
-                                    <TryCatch DisplayName="TryCatch - Escribir errores" sap:VirtualizedContainerService.HintSize="713,25" sap2010:WorkflowViewState.IdRef="TryCatch_16">
+                                    <TryCatch DisplayName="TryCatch - Escribir errores" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="TryCatch_16">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -628,16 +721,16 @@
                                         </Catch>
                                       </TryCatch.Catches>
                                     </TryCatch>
-                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[TbMailsPorCasilla]" DisplayName="Escribir rango - Mails por casilla" sap:VirtualizedContainerService.HintSize="713,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_4" SheetName="Casillas_leidas" StartingCell="A1" />
-                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[TbMailsSinDatos]" DisplayName="Escribir rango - Registro ANALISIS" sap:VirtualizedContainerService.HintSize="713,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Mails_Sin_Datos" StartingCell="A1" />
-                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[TbRegistroDetallado]" DisplayName="Escribir rango - Registro detallado" sap:VirtualizedContainerService.HintSize="713,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="Registro_Detallado" StartingCell="A1" />
-                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[TbRegistro]" DisplayName="Escribir rango - Registro" sap:VirtualizedContainerService.HintSize="713,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Registro" StartingCell="A1" />
-                                    <ui:ExcelReadCell Cell="C1" DisplayName="Leer celda" sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Registro">
+                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[TbMailsPorCasilla]" DisplayName="Escribir rango - Mails por casilla" sap:VirtualizedContainerService.HintSize="416,120" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_4" SheetName="Casillas_leidas" StartingCell="A1" />
+                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[TbMailsSinDatos]" DisplayName="Escribir rango - Registro ANALISIS" sap:VirtualizedContainerService.HintSize="416,120" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Mails_Sin_Datos" StartingCell="A1" />
+                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[TbRegistroDetallado]" DisplayName="Escribir rango - Registro detallado" sap:VirtualizedContainerService.HintSize="416,120" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="Registro_Detallado" StartingCell="A1" />
+                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Escribir rango - Registro" sap:VirtualizedContainerService.HintSize="416,120" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Registro" StartingCell="A1" />
+                                    <ui:ExcelReadCell Cell="C1" DisplayName="Leer celda" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Registro">
                                       <ui:ExcelReadCell.Result>
                                         <OutArgument x:TypeArguments="x:String">[RegistroAnterior]</OutArgument>
                                       </ui:ExcelReadCell.Result>
                                     </ui:ExcelReadCell>
-                                    <If Condition="[RegistroAnterior.Contains(DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;))]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="713,246" sap2010:WorkflowViewState.IdRef="If_2">
+                                    <If Condition="[RegistroAnterior.Contains(DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;))]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="416,359" sap2010:WorkflowViewState.IdRef="If_2">
                                       <If.Then>
                                         <ui:ExcelWriteCell Cell="B1" DisplayName="Escribir celda" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="Registro" Text="[&quot;Cant &quot; + DateTime.Now.ToString(&quot;dd/MM/yyyy HH.mm&quot;)]" />
                                       </If.Then>
@@ -645,7 +738,7 @@
                                         <ui:ExcelWriteCell Cell="B1" DisplayName="Escribir celda" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Registro" Text="[&quot;Cant &quot; + DateTime.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
                                       </If.Else>
                                     </If>
-                                    <ui:ExcelDeleteRange DisplayName="Eliminar rango" sap:VirtualizedContainerService.HintSize="713,133" sap2010:WorkflowViewState.IdRef="ExcelDeleteRange_1" Range="AE:AZ" SheetName="Registro" ShiftCells="False" ShiftOption="EntireColumn" />
+                                    <ui:ExcelDeleteRange DisplayName="Eliminar rango" sap:VirtualizedContainerService.HintSize="416,158" sap2010:WorkflowViewState.IdRef="ExcelDeleteRange_1" Range="AE:AZ" SheetName="Registro" ShiftCells="False" ShiftOption="EntireColumn" />
                                   </Sequence>
                                 </ActivityAction>
                               </ui:ExcelApplicationScope.Body>
@@ -656,7 +749,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:ExcelApplicationScope>
-                            <ui:FilterDataTable DataTable="[TbRegistro]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="809,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[TbRegistro]" SelectColumnsMode="Keep">
+                            <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,195" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" SelectColumnsMode="Keep">
                               <ui:FilterDataTable.Filters>
                                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                                   <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -669,8 +762,8 @@
                                 </scg:List>
                               </ui:FilterDataTable.SelectColumns>
                             </ui:FilterDataTable>
-                            <ui:OutputDataTable DataTable="[TbRegistro]" DisplayName="Tabla de datos de salida - Registro Txt" sap:VirtualizedContainerService.HintSize="809,25" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[RegistroTxt]" />
-                            <ui:WriteTextFile DisplayName="Escribir archivo de texto - registro" FileName="[NombreDeRegistro + &quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="809,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[RegistroTxt]">
+                            <ui:OutputDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Tabla de datos de salida - Registro Txt" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[RegistroTxt]" />
+                            <ui:WriteTextFile DisplayName="Escribir archivo de texto - registro" FileName="[NombreDeRegistro + &quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="484,167" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[RegistroTxt]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -678,27 +771,27 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:WriteTextFile>
-                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[RutaCarpetaBase + &quot;UltimoRegistro\&quot; + NombreDeRegistro + &quot;.xlsx&quot;]" DisplayName="Copiar archivo" sap:VirtualizedContainerService.HintSize="809,158" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[NombreDeRegistro + &quot;.xlsx&quot;]" />
+                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[RutaCarpetaBase + &quot;UltimoRegistro\&quot; + NombreDeRegistro + &quot;.xlsx&quot;]" DisplayName="Copiar archivo" sap:VirtualizedContainerService.HintSize="484,184" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[NombreDeRegistro + &quot;.xlsx&quot;]" />
                           </Sequence>
                           <FlowStep.Next>
                             <FlowStep x:Name="__ReferenceID10">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">10,634.5</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,25</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">210,647 257.5,647 257.5,610 300,610</av:PointCollection>
+                                  <av:Point x:Key="ShapeLocation">5,735</av:Point>
+                                  <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">115,770 145,770 145,720 305,720</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:LogMessage DisplayName="Registrar mensaje - Log fin registro" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Trace" Message="[&quot;Finalizó el proceso de la generacion de archivos de registro.&quot;]" />
+                              <ui:LogMessage DisplayName="Registrar mensaje - Log fin registro" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Trace" Message="[&quot;Finalizó el proceso de la generacion de archivos de registro.&quot;]" />
                               <FlowStep.Next>
                                 <FlowStep x:Name="__ReferenceID11">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">300,597.5</av:Point>
-                                      <av:Size x:Key="ShapeSize">200,25</av:Size>
+                                      <av:Point x:Key="ShapeLocation">305,685</av:Point>
+                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="Secuencia - envio de registro" sap:VirtualizedContainerService.HintSize="512,867" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                  <Sequence DisplayName="Secuencia - envio de registro" sap:VirtualizedContainerService.HintSize="486,896" sap2010:WorkflowViewState.IdRef="Sequence_24">
                                     <Sequence.Variables>
                                       <Variable x:TypeArguments="x:String" Name="Receptores" />
                                       <Variable x:TypeArguments="x:String" Name="ListaCasillasVacias" />
@@ -710,7 +803,7 @@
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Registrar mensaje - Log envio de registro" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Trace" Message="[&quot;Inició el proceso de envío del registro.&quot;]">
+                                    <ui:LogMessage DisplayName="Registrar mensaje - Log envio de registro" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Trace" Message="[&quot;Inició el proceso de envío del registro.&quot;]">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -718,7 +811,7 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:LogMessage>
-                                    <TryCatch DisplayName="TryCatch - Obtener receptores de mail" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="TryCatch_13">
+                                    <TryCatch DisplayName="TryCatch - Obtener receptores de mail" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="TryCatch_13">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -726,13 +819,13 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <TryCatch.Try>
-                                        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Receptores_De_Informes_La_Mev" DisplayName="Obtener activo - Receptores Mev" sap:VirtualizedContainerService.HintSize="257,25" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+                                        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ReceptoresDeInformesLaMev" DisplayName="Obtener activo - Receptores Mev" sap:VirtualizedContainerService.HintSize="450,140" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
                                           <ui:GetRobotAsset.Value>
                                             <OutArgument x:TypeArguments="x:String">[Receptores]</OutArgument>
                                           </ui:GetRobotAsset.Value>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
@@ -750,14 +843,14 @@
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Secuencia - catch obtener receptores de mail" sap:VirtualizedContainerService.HintSize="496,318" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                            <Sequence DisplayName="Secuencia - catch obtener receptores de mail" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_25">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:LogMessage DisplayName="Registrar mensaje - catch obtener receptores de mail" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Error" Message="[&quot;Ocurrió un error al obtener los receptores del envio de registro. se asigno el receptor por default avisoderivacion@cartasur.com.ar - Detalle del error: &quot; + exception.Message]">
+                                              <ui:LogMessage DisplayName="Registrar mensaje - catch obtener receptores de mail" sap:VirtualizedContainerService.HintSize="416,126" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Error" Message="[&quot;Ocurrió un error al obtener los receptores del envio de registro. se asigno el receptor por default avisoderivacion@cartasur.com.ar - Detalle del error: &quot; + exception.Message]">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -765,7 +858,7 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </ui:LogMessage>
-                                              <Assign DisplayName="Asignar - receptor de mail default" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                              <Assign DisplayName="Asignar - receptor de mail default" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_9">
                                                 <Assign.To>
                                                   <OutArgument x:TypeArguments="x:String">[Receptores]</OutArgument>
                                                 </Assign.To>
@@ -778,21 +871,27 @@
                                         </Catch>
                                       </TryCatch.Catches>
                                     </TryCatch>
-                                    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="450,82" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_20">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:String">[ListaCasillasVacias]</OutArgument>
                                       </Assign.To>
                                       <Assign.Value>
                                         <InArgument x:TypeArguments="x:String">[String.Concat(IIF(ListCasillasVacias.Count&gt;0,"Las siguientes casillas se encontraban vacias:" + Environment.NewLine + Environment.NewLine,String.Empty))]</InArgument>
                                       </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
                                     </Assign>
-                                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Para cada - Casillas vacias" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[ListCasillasVacias]">
+                                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Para cada - Casillas vacias" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[ListCasillasVacias]">
                                       <ui:ForEach.Body>
                                         <ActivityAction x:TypeArguments="x:String">
                                           <ActivityAction.Argument>
                                             <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                                           </ActivityAction.Argument>
-                                          <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                          <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="398,143" sap2010:WorkflowViewState.IdRef="Assign_21">
                                             <Assign.To>
                                               <OutArgument x:TypeArguments="x:String">[ListaCasillasVacias]</OutArgument>
                                             </Assign.To>
@@ -809,14 +908,14 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:ForEach>
-                                    <Sequence DisplayName="Secuencia - Get credenciales casilla" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                    <Sequence DisplayName="Secuencia - Get credenciales casilla" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Sequence_57">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <TryCatch DisplayName="TryCatch - GetCasillaDerivadora" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="TryCatch_18">
+                                      <TryCatch DisplayName="TryCatch - GetCasillaDerivadora" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="TryCatch_18">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -876,7 +975,7 @@
                                           </Catch>
                                         </TryCatch.Catches>
                                       </TryCatch>
-                                      <TryCatch DisplayName="TryCatch - GetClaveCasilla" sap:VirtualizedContainerService.HintSize="534,675" sap2010:WorkflowViewState.IdRef="TryCatch_19">
+                                      <TryCatch DisplayName="TryCatch - GetClaveCasilla" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="TryCatch_19">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -937,7 +1036,12 @@
                                         </TryCatch.Catches>
                                       </TryCatch>
                                     </Sequence>
-                                    <TryCatch DisplayName="TryCatch - Enviar mail Reporte" sap:VirtualizedContainerService.HintSize="450,374" sap2010:WorkflowViewState.IdRef="TryCatch_12">
+                                    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PuertoSmtpSalida" DisplayName="Obtener activo" sap:VirtualizedContainerService.HintSize="452,172" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+                                      <ui:GetRobotAsset.Value>
+                                        <OutArgument x:TypeArguments="x:Int32">[GlobalVariablesNamespace.GlobalVariables.PuertoSmtp]</OutArgument>
+                                      </ui:GetRobotAsset.Value>
+                                    </ui:GetRobotAsset>
+                                    <TryCatch DisplayName="TryCatch - Enviar mail Reporte" sap:VirtualizedContainerService.HintSize="452,379" sap2010:WorkflowViewState.IdRef="TryCatch_12">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -945,7 +1049,7 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <TryCatch.Try>
-                                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Buenos días.&quot; + Environment.NewLine() +&#xA;ListaCasillasVacias + Environment.NewLine() +&#xA;&quot;Se Adjuntan archivos con los registros de las derivaciones..&quot; + Environment.NewLine() +&#xA;Environment.NewLine() +&#xA;&quot;Saludos!&quot;]" DisplayName="Enviar mensaje de correo SMTP - registro" Email="[sUsuario]" EnableSSL="True" From="[sUsuario]" sap:VirtualizedContainerService.HintSize="334,146" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Name="Derivación de MEV" Password="[sClave]" Port="25" SecureConnection="None" Server="[ServidorMail]" Subject="Registro de derivaciones" To="[Receptores]">
+                                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Buenos días.&quot; + Environment.NewLine() +&#xA;ListaCasillasVacias + Environment.NewLine() +&#xA;&quot;Se Adjuntan archivos con los registros de las derivaciones..&quot; + Environment.NewLine() +&#xA;Environment.NewLine() +&#xA;&quot;Saludos!&quot;]" DisplayName="Enviar mensaje de correo SMTP - registro" Email="[sUsuario]" EnableSSL="True" From="[sUsuario]" sap:VirtualizedContainerService.HintSize="450,148" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Name="Derivación de MEV" Password="[sClave]" Port="[GlobalVariablesNamespace.GlobalVariables.PuertoSmtp]" SecureConnection="SslOnConnect" Server="[ServidorMailSalida]" Subject="Registro de derivaciones" To="[Receptores]">
                                           <ui:SendMail.Files>
                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                                               <InArgument x:TypeArguments="x:String">[NombreDeRegistro + ".txt"]</InArgument>
@@ -972,15 +1076,15 @@
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Secuencia - Exception enviar mail" sap:VirtualizedContainerService.HintSize="416,22" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                            <Sequence DisplayName="Secuencia - Exception enviar mail" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:LogMessage DisplayName="Registrar mensaje - error enviar mail registro" sap:VirtualizedContainerService.HintSize="384,92" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[string.Format( &quot;Ocurrio un error al enviar el mail con los registros de las derivaciones. Los archivos se guardaran en {0}{1}. Detalles del error: {2}&quot;,RutaCarpetaBase,date.Now.ToString(&quot;dd-MM-yyyy&quot;),exception.Message)]" />
-                                              <ui:MoveFile ContinueOnError="{x:Null}" Destination="[RutaCarpetaBase + date.Now.ToString(&quot;dd-MM-yyyy&quot;) + &quot;\&quot; + NombreDeRegistro + &quot;.xlsx&quot;]" DisplayName="Mover archivo - Copia registro excel." sap:VirtualizedContainerService.HintSize="384,158" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[NombreDeRegistro + &quot;.xlsx&quot;]">
+                                              <ui:LogMessage DisplayName="Registrar mensaje - error enviar mail registro" sap:VirtualizedContainerService.HintSize="416,126" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[string.Format( &quot;Ocurrio un error al enviar el mail con los registros de las derivaciones. Los archivos se guardaran en {0}{1}. Detalles del error: {2}&quot;,RutaCarpetaBase,date.Now.ToString(&quot;dd-MM-yyyy&quot;),exception.Message)]" />
+                                              <ui:MoveFile ContinueOnError="{x:Null}" Destination="[RutaCarpetaBase + date.Now.ToString(&quot;dd-MM-yyyy&quot;) + &quot;\&quot; + NombreDeRegistro + &quot;.xlsx&quot;]" DisplayName="Mover archivo - Copia registro excel." sap:VirtualizedContainerService.HintSize="416,184" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[NombreDeRegistro + &quot;.xlsx&quot;]">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -993,14 +1097,14 @@
                                         </Catch>
                                       </TryCatch.Catches>
                                       <TryCatch.Finally>
-                                        <Sequence DisplayName="Secuencia - eliminar archivos" sap:VirtualizedContainerService.HintSize="416,440" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                        <Sequence DisplayName="Secuencia - eliminar archivos" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_26">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ui:Delete ContinueOnError="True" DisplayName="Eliminar - Registro Txt" sap:VirtualizedContainerService.HintSize="354,80" sap2010:WorkflowViewState.IdRef="Delete_4" Path="[NombreDeRegistro + &quot;.txt&quot;]">
+                                          <ui:Delete ContinueOnError="True" DisplayName="Eliminar - Registro Txt" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Delete_4" Path="[NombreDeRegistro + &quot;.txt&quot;]">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1008,7 +1112,7 @@
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:Delete>
-                                          <ui:Delete ContinueOnError="True" DisplayName="Eliminar - Registro excel" sap:VirtualizedContainerService.HintSize="354,80" sap2010:WorkflowViewState.IdRef="Delete_7" Path="[NombreDeRegistro + &quot;.xlsx&quot;]">
+                                          <ui:Delete ContinueOnError="True" DisplayName="Eliminar - Registro excel" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Delete_7" Path="[NombreDeRegistro + &quot;.xlsx&quot;]">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1016,7 +1120,7 @@
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:Delete>
-                                          <ui:LogMessage DisplayName="Registrar mensaje - Log fin Envio registro" sap:VirtualizedContainerService.HintSize="354,92" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Trace" Message="[&quot;Finalizó el proceso de envío del registro.&quot;]">
+                                          <ui:LogMessage DisplayName="Registrar mensaje - Log fin Envio registro" sap:VirtualizedContainerService.HintSize="416,117" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Trace" Message="[&quot;Finalizó el proceso de envío del registro.&quot;]">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1043,27 +1147,27 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">360,367.5</av:Point>
-                      <av:Size x:Key="ShapeSize">200,25</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">460,392.5 460,424.5</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">415,437.5 415,467.5 410,467.5 410,485</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Registrar mensaje - Log ParaCadaCasilla" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Inició el ciclo de lectura de mails.&quot;]" />
+                  <ui:LogMessage DisplayName="Registrar mensaje - Log ParaCadaCasilla" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Inició el ciclo de lectura de mails.&quot;]" />
                   <FlowStep.Next>
                     <FlowStep x:Name="__ReferenceID7">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">360,424.5</av:Point>
-                          <av:Size x:Key="ShapeSize">200,25</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">460,449.5 460,474.5</av:PointCollection>
+                          <av:Point x:Key="ShapeLocation">355,485</av:Point>
+                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">410,555 410,585 380,585 380,595</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[TbReceptoresDeMev]" DisplayName="ForEachRow in TbReceptoresDeMev" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[TbReceptoresDeMev]" DisplayName="ForEachRow in TbReceptoresDeMev" sap:VirtualizedContainerService.HintSize="592,2033" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Cuerpo - ForEachRow in TbReceptoresDeMev" sap:VirtualizedContainerService.HintSize="500,957" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <Sequence DisplayName="Cuerpo - ForEachRow in TbReceptoresDeMev" sap:VirtualizedContainerService.HintSize="559,1910" sap2010:WorkflowViewState.IdRef="Sequence_9">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="Casilla" />
                                 <Variable x:TypeArguments="x:String" Name="Clave" />
@@ -1076,7 +1180,7 @@
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <TryCatch DisplayName="TryCatch - get casilla" sap:VirtualizedContainerService.HintSize="438,25" sap2010:WorkflowViewState.IdRef="TryCatch_10">
+                              <TryCatch DisplayName="TryCatch - get casilla" sap:VirtualizedContainerService.HintSize="524,57" sap2010:WorkflowViewState.IdRef="TryCatch_10">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1084,7 +1188,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Mail" DisplayName="Obtener elemento de fila - Get Casilla" sap:VirtualizedContainerService.HintSize="280,25" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[Row]">
+                                  <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Mail" DisplayName="Obtener elemento de fila - Get Casilla" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[Row]">
                                     <ui:GetRowItem.Value>
                                       <OutArgument x:TypeArguments="x:String">[Casilla]</OutArgument>
                                     </ui:GetRowItem.Value>
@@ -1108,14 +1212,14 @@
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                       </ActivityAction.Argument>
-                                      <Sequence DisplayName="Secuencia - catch get casilla" sap:VirtualizedContainerService.HintSize="416,265" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                      <Sequence DisplayName="Secuencia - catch get casilla" sap:VirtualizedContainerService.HintSize="450,234" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:LogMessage DisplayName="Registrar mensaje - Log obtener casilla" sap:VirtualizedContainerService.HintSize="354,92" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[&quot;Error al obtener la casilla del mail. Detalle del error: &quot; + exception.Message]">
+                                        <ui:LogMessage DisplayName="Registrar mensaje - Log obtener casilla" sap:VirtualizedContainerService.HintSize="416,126" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[&quot;Error al obtener la casilla del mail. Detalle del error: &quot; + exception.Message]">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1123,13 +1227,22 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:LogMessage>
-                                        <ui:Continue DisplayName="Continuar - Sigue con la siguiente casilla" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="Continue_4" />
+                                        <ui:Continue DisplayName="Continuar - Sigue con la siguiente casilla" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Continue_4" />
                                       </Sequence>
                                     </ActivityAction>
                                   </Catch>
                                 </TryCatch.Catches>
+                                <TryCatch.Finally>
+                                  <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </TryCatch.Finally>
                               </TryCatch>
-                              <TryCatch DisplayName="Trycatch - get clave" sap:VirtualizedContainerService.HintSize="438,25" sap2010:WorkflowViewState.IdRef="TryCatch_11">
+                              <TryCatch DisplayName="Trycatch - get clave" sap:VirtualizedContainerService.HintSize="524,57" sap2010:WorkflowViewState.IdRef="TryCatch_11">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1182,7 +1295,7 @@
                                   </Catch>
                                 </TryCatch.Catches>
                               </TryCatch>
-                              <ui:LogMessage DisplayName="Registrar mensaje - Log leer mails de casilla" sap:VirtualizedContainerService.HintSize="438,25" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;Inició la actividad 'Leer mails' para la casilla &quot; + Casilla]">
+                              <ui:LogMessage DisplayName="Registrar mensaje - Log leer mails de casilla" sap:VirtualizedContainerService.HintSize="524,57" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;Inició la actividad 'Leer mails' para la casilla &quot; + Casilla]">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1190,7 +1303,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:LogMessage>
-                              <TryCatch DisplayName="TryCatch -  Leer Mails" sap:VirtualizedContainerService.HintSize="438,288" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                              <TryCatch DisplayName="TryCatch -  Leer Mails" sap:VirtualizedContainerService.HintSize="524,265" sap2010:WorkflowViewState.IdRef="TryCatch_6">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1198,7 +1311,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <ui:GetPOP3MailMessages SecurePassword="{x:Null}" DeleteMessages="True" DisplayName="Obtener mensajes de correo POP3" Email="[Casilla]" EnableSSL="False" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="GetPOP3MailMessages_2" Messages="[ListaDeMails]" Password="[Clave]" Port="110" SecureConnection="None" Server="[ServidorMail]" TimeoutMS="10000" Top="400" />
+                                  <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Obtener mensajes de correo IMAP" Email="[Casilla]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_2" MailFolder="Inbox" MarkAsRead="False" Messages="[ListaDeMails]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Password="[Clave]" Port="[PuertoMailEntrada]" SecureConnection="SslOnConnect" Server="[ServidorMailEntrada]" Top="5" />
                                 </TryCatch.Try>
                                 <TryCatch.Catches>
                                   <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
@@ -1212,15 +1325,15 @@
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                       </ActivityAction.Argument>
-                                      <Sequence DisplayName="Secuencia - Catch Leer mails" sap:VirtualizedContainerService.HintSize="416,22" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                      <Sequence DisplayName="Secuencia - Catch Leer mails" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <AddToCollection x:TypeArguments="x:String" Collection="[ListaDeErrores]" DisplayName="Añadir a colección - Error al leer mails" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="AddToCollection`1_7" Item="[&quot;No se pudo leer los mails de &quot; + Casilla + &quot; Detalle de error: &quot; + exception.Message]" />
-                                        <ui:LogMessage DisplayName="Registrar mensaje - Error al leer mails" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot;No se pudo leer los mails de &quot; + Casilla + &quot;. Se omite esta casilla y continua el proceso. Detalle del error: &quot; + exception.Message]">
+                                        <AddToCollection x:TypeArguments="x:String" Collection="[ListaDeErrores]" DisplayName="Añadir a colección - Error al leer mails" sap:VirtualizedContainerService.HintSize="416,54" sap2010:WorkflowViewState.IdRef="AddToCollection`1_7" Item="[&quot;No se pudo leer los mails de &quot; + Casilla + &quot; Detalle de error: &quot; + exception.Message]" />
+                                        <ui:LogMessage DisplayName="Registrar mensaje - Error al leer mails" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot;No se pudo leer los mails de &quot; + Casilla + &quot;. Se omite esta casilla y continua el proceso. Detalle del error: &quot; + exception.Message]">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1228,25 +1341,25 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:LogMessage>
-                                        <ui:Continue DisplayName="Continuar - Sigue con la prox casilla" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                                        <ui:Continue DisplayName="Continuar - Sigue con la prox casilla" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Continue_2" />
                                       </Sequence>
                                     </ActivityAction>
                                   </Catch>
                                 </TryCatch.Catches>
                                 <TryCatch.Finally>
-                                  <Sequence DisplayName="Secuencia - finally leer mails" sap:VirtualizedContainerService.HintSize="416,265" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                  <Sequence DisplayName="Secuencia - finally leer mails" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_10">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Registrar mensaje - Log fin leer mails" sap:VirtualizedContainerService.HintSize="354,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Finalizó la actividad 'Leer mails' para la casilla &quot; + Casilla + &quot;. Para esta casilla de registraron &quot; + ListaDeMails.Count.ToString() + &quot; mails.&quot;]" />
-                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Casilla,ListaDeMails.Count}]" DataTable="[TbMailsPorCasilla]" DisplayName="Añadir fila de datos - Mails por casilla" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                                    <ui:LogMessage DisplayName="Registrar mensaje - Log fin leer mails" sap:VirtualizedContainerService.HintSize="416,126" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Finalizó la actividad 'Leer mails' para la casilla &quot; &amp; Casilla &amp; &quot;. Para esta casilla de registraron &quot; &amp; ListaDeMails.Count.ToString() &amp; &quot; mails.&quot;]" />
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[new Object(){Casilla,ListaDeMails.Count}]" DataTable="[TbMailsPorCasilla]" DisplayName="Añadir fila de datos - Mails por casilla" sap:VirtualizedContainerService.HintSize="416,212" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                                   </Sequence>
                                 </TryCatch.Finally>
                               </TryCatch>
-                              <If Condition="[ListaDeMails.Count&gt;0]" DisplayName="Si - se encontraron mails" sap:VirtualizedContainerService.HintSize="438,25" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If Condition="[ListaDeMails.Count&gt;0]" DisplayName="Si - se encontraron mails" sap:VirtualizedContainerService.HintSize="524,57" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1254,7 +1367,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <ui:LogMessage DisplayName="Registrar mensaje - Log inicio ciclo derivaciones" sap:VirtualizedContainerService.HintSize="329,25" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Trace" Message="[&quot;Inició el ciclo de derivaciones de mail para la casilla &quot; + Casilla]">
+                                  <ui:LogMessage DisplayName="Registrar mensaje - Log inicio ciclo derivaciones" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Trace" Message="[&quot;Inició el ciclo de derivaciones de mail para la casilla &quot; + Casilla]">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1264,36 +1377,37 @@
                                   </ui:LogMessage>
                                 </If.Then>
                                 <If.Else>
-                                  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="416,198" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                                  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_52">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <AddToCollection x:TypeArguments="x:String" Collection="[ListCasillasVacias]" DisplayName="Añadir a colección" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="AddToCollection`1_10" Item="[Casilla]" />
-                                    <ui:Continue DisplayName="Continuar - siguiente casilla" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="Continue_6" />
+                                    <AddToCollection x:TypeArguments="x:String" Collection="[ListCasillasVacias]" DisplayName="Añadir a colección" sap:VirtualizedContainerService.HintSize="416,54" sap2010:WorkflowViewState.IdRef="AddToCollection`1_10" Item="[Casilla]" />
+                                    <ui:Continue DisplayName="Continuar - siguiente casilla" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Continue_6" />
                                   </Sequence>
                                 </If.Else>
                               </If>
-                              <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="[Index]" DisplayName="Para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="438,196" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[ListaDeMails]">
+                              <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="[Index]" DisplayName="Para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="524,1309" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[ListaDeMails]">
                                 <ui:ForEach.Body>
                                   <ActivityAction x:TypeArguments="snm:MailMessage">
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="item" />
                                     </ActivityAction.Argument>
-                                    <TryCatch DisplayName="TryCatch - Para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="306,25" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                                    <TryCatch DisplayName="TryCatch - Para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="488,1150" sap2010:WorkflowViewState.IdRef="TryCatch_7">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <TryCatch.Try>
-                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DerivaMails workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="DerivaMails.xaml">
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DerivaMails workflow" sap:VirtualizedContainerService.HintSize="486,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="DerivaMails.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
                                             <InArgument x:TypeArguments="snm:MailMessage" x:Key="mail">[item]</InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="Servidor">[ServidorMail]</InArgument>
-                                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="TablaRegistro">[TbRegistro]</InOutArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="Servidor">[ServidorMailSalida]</InArgument>
+                                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="TablaRegistro">[GlobalVariablesNamespace.GlobalVariables.TbRegistro]</InOutArgument>
                                             <InOutArgument x:TypeArguments="sd:DataTable" x:Key="TablaRegistroDetallado">[TbRegistroDetallado]</InOutArgument>
                                             <InOutArgument x:TypeArguments="sd:DataTable" x:Key="TablaMailsAnalisis">[TbMailsSinDatos]</InOutArgument>
                                             <InArgument x:TypeArguments="x:String" x:Key="Casilla">[Casilla]</InArgument>
@@ -1312,18 +1426,18 @@
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Secuencia - catch Para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="416,525" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                            <Sequence DisplayName="Secuencia - catch Para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="486,853" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                               <Sequence.Variables>
                                                 <Variable x:TypeArguments="x:String" Name="RutaDeCorreo" />
                                                 <Variable x:TypeArguments="x:String" Name="NombreDeArchivo" />
                                               </Sequence.Variables>
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:LogMessage DisplayName="Registrar mensaje - catch para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="354,92" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Ocurrió un error al ejecutar la actividad de derivacion. Se guardará el mail en '&quot; + RutaCarpetaBase + Date.Now.ToString(&quot;dd-MM-yyyy&quot;) + &quot;'. Se omite este mail y continua el proceso. Detalle del error: &quot; + exception.Message]">
+                                              <ui:LogMessage DisplayName="Registrar mensaje - catch para cada item en lista de mails" sap:VirtualizedContainerService.HintSize="452,126" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Ocurrió un error al ejecutar la actividad de derivacion. Se guardará el mail en '&quot; + RutaCarpetaBase + Date.Now.ToString(&quot;dd-MM-yyyy&quot;) + &quot;'. Se omite este mail y continua el proceso. Detalle del error: &quot; + exception.Message]">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1331,20 +1445,20 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </ui:LogMessage>
-                                              <TryCatch DisplayName="TryCatch - Get Nombre de archivo" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                                              <TryCatch DisplayName="TryCatch - Get Nombre de archivo" sap:VirtualizedContainerService.HintSize="452,448" sap2010:WorkflowViewState.IdRef="TryCatch_8">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                                 <TryCatch.Try>
-                                                  <Assign DisplayName="Asignar - Ruta en la cual se va a guardar el correo" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                                  <Assign DisplayName="Asignar - Ruta en la cual se va a guardar el correo" sap:VirtualizedContainerService.HintSize="450,143" sap2010:WorkflowViewState.IdRef="Assign_5">
                                                     <Assign.To>
                                                       <OutArgument x:TypeArguments="x:String">[NombreDeArchivo]</OutArgument>
                                                     </Assign.To>
                                                     <Assign.Value>
-                                                      <InArgument x:TypeArguments="x:String">[Regex.Replace(item.Subject,"[^\w\.@-]","",RegexOptions.None,TimeSpan.FromSeconds(1.5))]</InArgument>
+                                                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(item.Subject, "[^a-zA-Z0-9\s]", "")]</InArgument>
                                                     </Assign.Value>
                                                   </Assign>
                                                 </TryCatch.Try>
@@ -1360,7 +1474,7 @@
                                                       <ActivityAction.Argument>
                                                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                                       </ActivityAction.Argument>
-                                                      <Assign DisplayName="Asignar - Ruta en la cual se va a guardar el correo" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                      <Assign DisplayName="Asignar - Ruta en la cual se va a guardar el correo" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Assign_6">
                                                         <Assign.To>
                                                           <OutArgument x:TypeArguments="x:String">[NombreDeArchivo]</OutArgument>
                                                         </Assign.To>
@@ -1371,8 +1485,17 @@
                                                     </ActivityAction>
                                                   </Catch>
                                                 </TryCatch.Catches>
+                                                <TryCatch.Finally>
+                                                  <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </Sequence>
+                                                </TryCatch.Finally>
                                               </TryCatch>
-                                              <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                              <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_12">
                                                 <Assign.To>
                                                   <OutArgument x:TypeArguments="x:String">[NombreDeArchivo]</OutArgument>
                                                 </Assign.To>
@@ -1386,7 +1509,7 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </Assign>
-                                              <Assign DisplayName="Asignar - Ruta en la cual se va a guardar el correo" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                              <Assign DisplayName="Asignar - Ruta en la cual se va a guardar el correo" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_3">
                                                 <Assign.To>
                                                   <OutArgument x:TypeArguments="x:String">[RutaDeCorreo]</OutArgument>
                                                 </Assign.To>
@@ -1400,7 +1523,7 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </Assign>
-                                              <TryCatch DisplayName="TryCatch - Guardar mensaje de correo" sap:VirtualizedContainerService.HintSize="438,288" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                                              <TryCatch DisplayName="TryCatch - Guardar mensaje de correo" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1444,11 +1567,21 @@
                                                   <AddToCollection x:TypeArguments="x:String" Collection="[ListaDeErrores]" DisplayName="Añadir a colección - error proceso de derivacion." sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddToCollection`1_8" Item="[&quot;Ocurrió un error al ejecutar la actividad de derivacion. Se guardó el mail en '&quot; + RutaDeCorreo + &quot;'. Se omite este mail y continua el proceso. Detalle del error: &quot; + exception.Message]" />
                                                 </TryCatch.Finally>
                                               </TryCatch>
-                                              <ui:Continue DisplayName="Continuar -  sigue con el proximo mail" sap:VirtualizedContainerService.HintSize="354,25" sap2010:WorkflowViewState.IdRef="Continue_3" />
+                                              <ui:Continue DisplayName="Continuar -  sigue con el proximo mail" sap:VirtualizedContainerService.HintSize="452,48" sap2010:WorkflowViewState.IdRef="Continue_3" />
                                             </Sequence>
                                           </ActivityAction>
                                         </Catch>
                                       </TryCatch.Catches>
+                                      <TryCatch.Finally>
+                                        <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Sequence>
+                                      </TryCatch.Finally>
                                     </TryCatch>
                                   </ActivityAction>
                                 </ui:ForEach.Body>
@@ -1459,7 +1592,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:ForEach>
-                              <ui:LogMessage DisplayName="Registrar mensaje - Log fin ciclo derivaciones" sap:VirtualizedContainerService.HintSize="438,25" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Trace" Message="[&quot;Finalizó el ciclo de derivaciones de mail para la casilla &quot; + Casilla]">
+                              <ui:LogMessage DisplayName="Registrar mensaje - Log fin ciclo derivaciones" sap:VirtualizedContainerService.HintSize="524,48" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Trace" Message="[&quot;Finalizó el ciclo de derivaciones de mail para la casilla &quot; + Casilla]">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1481,12 +1614,12 @@
                         <FlowStep x:Name="__ReferenceID6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">360,474.5</av:Point>
-                              <av:Size x:Key="ShapeSize">200,25</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">360,487 210,487</av:PointCollection>
+                              <av:Point x:Key="ShapeLocation">325,595</av:Point>
+                              <av:Size x:Key="ShapeSize">110,70</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">325,630 295,630 295,509.5 120,509.5</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Registrar mensaje - fin log para cada casilla" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[&quot;Finalizó el ciclo de lectura de mails.&quot;]" />
+                          <ui:LogMessage DisplayName="Registrar mensaje - fin log para cada casilla" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[&quot;Finalizó el ciclo de lectura de mails.&quot;]" />
                           <FlowStep.Next>
                             <x:Reference>__ReferenceID0</x:Reference>
                           </FlowStep.Next>
@@ -1507,52 +1640,52 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">380,107</av:Point>
-          <av:Size x:Key="ShapeSize">200,25</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">480,132 480,194.5</av:PointCollection>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">435,177 435,194.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Secuencia - Crear tablas y carpeta de registros." sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence DisplayName="Secuencia - Crear tablas y carpeta de registros." sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_6">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:BuildDataTable DataTable="[TbRegistro]" DisplayName="Crear tabla de datos - Registro" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_6" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Mail&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cantidad&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+        <ui:BuildDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Crear tabla de datos - Registro" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_6" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Mail&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cantidad&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:BuildDataTable>
-        <ui:BuildDataTable DataTable="[TbRegistroDetallado]" DisplayName="Crear tabla de datos - Registro Detallado" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_7" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ASUNTO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ORIGEN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CASILLA_LEIDA&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;DESTINO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CAUSA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ORGANISMO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CARATULA&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;900&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;CARPETA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SITUACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NOMBRE_SITUACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SET_JUDICIAL&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+        <ui:BuildDataTable DataTable="[TbRegistroDetallado]" DisplayName="Crear tabla de datos - Registro Detallado" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_7" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ASUNTO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ORIGEN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CASILLA_LEIDA&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;DESTINO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CAUSA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ORGANISMO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CARATULA&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;900&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;CARPETA&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SITUACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;NOMBRE_SITUACION&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SET_JUDICIAL&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:BuildDataTable>
-        <ui:BuildDataTable DataTable="[TbMailsPorCasilla]" DisplayName="Crear tabla de datos - Mails Por Casilla" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Casilla&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cantidad_x0020_de_x0020_mails_x0020_leidos&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+        <ui:BuildDataTable DataTable="[TbMailsPorCasilla]" DisplayName="Crear tabla de datos - Mails Por Casilla" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Casilla&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cantidad_x0020_de_x0020_mails_x0020_leidos&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:BuildDataTable>
-        <ui:BuildDataTable DataTable="[TbMailsSinDatos]" DisplayName="Crear tabla de datos - Mails a Analisis" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_13" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;CasillaLeida&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Causa&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Organismo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;AsuntoMail&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Detalle&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+        <ui:BuildDataTable DataTable="[TbMailsSinDatos]" DisplayName="Crear tabla de datos - Mails a Analisis" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_13" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;CasillaLeida&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Causa&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Organismo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;AsuntoMail&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Detalle&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;800&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:BuildDataTable>
-        <ui:Delete ContinueOnError="True" DisplayName="Eliminar - registros viejos" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="Delete_10" Path="[RutaCarpetaBase + Date.Now.AddDays(-14).ToString(&quot;dd-MM-yyyy&quot;)]">
+        <ui:Delete ContinueOnError="True" DisplayName="Eliminar - registros viejos" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Delete_10" Path="[RutaCarpetaBase + Date.Now.AddDays(-14).ToString(&quot;dd-MM-yyyy&quot;)]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:Delete>
-        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Crear carpeta - RutaCarpeta base" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[RutaCarpetaBase+ Date.Now.ToString(&quot;dd-MM-yyyy&quot;)]">
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Crear carpeta - RutaCarpeta base" sap:VirtualizedContainerService.HintSize="416,104" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[RutaCarpetaBase+ Date.Now.ToString(&quot;dd-MM-yyyy&quot;)]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1566,11 +1699,11 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">380,194.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,25</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">480,219.5 480,267.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">110,70</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">435,264.5 435,267.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Registrar mensaje - Log get mails receptores de mev" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Inició el proceso 'Obtener mails Receptores de mev'&quot;]" />
+          <ui:LogMessage DisplayName="Registrar mensaje - Log get mails receptores de mev" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Inició el proceso 'Obtener mails Receptores de mev'&quot;]" />
           <FlowStep.Next>
             <x:Reference>__ReferenceID3</x:Reference>
           </FlowStep.Next>
@@ -1589,18 +1722,18 @@
     <FlowStep x:Name="__ReferenceID15">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">160,37.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,25</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">260,62.5 260,136.5</av:PointCollection>
+          <av:Point x:Key="ShapeLocation">200,10</av:Point>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">255,80 255,136.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Secuencia - Limite de ejecucion" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Sequence_27">
+      <Sequence DisplayName="Secuencia - Limite de ejecucion" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_27">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:PathExists DisplayName="Ruta existente - carpeta backup del dia" Exists="[ExisteRuta]" sap:VirtualizedContainerService.HintSize="482,90" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[RutaCarpetaBase + Date.Now.ToString(&quot;dd-MM-yyyy&quot;)]" PathType="Folder">
+        <ui:PathExists DisplayName="Ruta existente - carpeta backup del dia" Exists="[ExisteRuta]" sap:VirtualizedContainerService.HintSize="452,123" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[RutaCarpetaBase + Date.Now.ToString(&quot;dd-MM-yyyy&quot;)]" PathType="Folder">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1608,7 +1741,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:PathExists>
-        <TryCatch DisplayName="TryCatch - Limite de ejecucion" sap:VirtualizedContainerService.HintSize="482,366" sap2010:WorkflowViewState.IdRef="TryCatch_14">
+        <TryCatch DisplayName="TryCatch - Limite de ejecucion" sap:VirtualizedContainerService.HintSize="452,554" sap2010:WorkflowViewState.IdRef="TryCatch_14">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1616,7 +1749,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LimiteEjecucionDerivaMev" DisplayName="Obtener activo - LimiteEjecucion" sap:VirtualizedContainerService.HintSize="444,138" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LimiteEjecucionDerivaMev" DisplayName="Obtener activo - LimiteEjecucion" sap:VirtualizedContainerService.HintSize="450,140" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
               <ui:GetRobotAsset.Value>
                 <OutArgument x:TypeArguments="x:Boolean">[LimiteEjecucion]</OutArgument>
               </ui:GetRobotAsset.Value>
@@ -1640,7 +1773,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                 </ActivityAction.Argument>
-                <Assign DisplayName="Asignar - limite de ejecucion Default" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign DisplayName="Asignar - limite de ejecucion Default" sap:VirtualizedContainerService.HintSize="450,143" sap2010:WorkflowViewState.IdRef="Assign_11">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[LimiteEjecucion]</OutArgument>
                   </Assign.To>
@@ -1651,34 +1784,37 @@
               </ActivityAction>
             </Catch>
           </TryCatch.Catches>
+          <TryCatch.Finally>
+            <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_58">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </TryCatch.Finally>
         </TryCatch>
       </Sequence>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID13" Condition="[LimiteEjecucion AND ExisteRuta]" DisplayName="Hay limite?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+        <FlowDecision x:Name="__ReferenceID13" Condition="[LimiteEjecucion AND ExisteRuta]" DisplayName="Hay limite?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <av:Point x:Key="ShapeLocation">225,136.5</av:Point>
-              <av:Size x:Key="ShapeSize">70,87</av:Size>
-              <av:PointCollection x:Key="TrueConnector">225,180 100,180 100,209</av:PointCollection>
-              <av:PointCollection x:Key="FalseConnector">295,180 325,180 325,119.5 380,119.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">60,60</av:Size>
+              <av:PointCollection x:Key="TrueConnector">225,166.5 80,166.5 80,185</av:PointCollection>
+              <av:PointCollection x:Key="FalseConnector">285,166.5 315,166.5 315,142 380,142</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowDecision.True>
             <FlowStep x:Name="__ReferenceID14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">0,209</av:Point>
-                  <av:Size x:Key="ShapeSize">200,25</av:Size>
+                  <av:Point x:Key="ShapeLocation">25,185</av:Point>
+                  <av:Size x:Key="ShapeSize">110,70</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <m:AutoCloseMessageBox ChosenButton="{x:Null}" Buttons="Ok" CloseMessageBox="30" DisplayName="MsgBox - Limite de ejecucion" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AutoCloseMessageBox_1" Message="El proceso ya fue ejecutado en el dia." Title="DERIVAMEV">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </m:AutoCloseMessageBox>
+              <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:30:00" Buttons="Ok" Caption="Limite alcanzado" DisplayName="Error Limite Diario." sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;El proceso ya fue ejecutado en el dia.&quot;]" />
             </FlowStep>
           </FlowDecision.True>
           <FlowDecision.False>
@@ -1692,12 +1828,12 @@
     <FlowStep>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">300,537.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,25</av:Size>
+          <av:Point x:Key="ShapeLocation">155,595</av:Point>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">130,613 130,637</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Secuencia - agregar datos -Registro" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Sequence_50">
+      <Sequence DisplayName="Secuencia - agregar datos -Registro" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_50">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Int32" Default="0" Name="CntTotalMails" />
           <Variable x:TypeArguments="x:String" Name="CntMailsSinDatos" />
@@ -1708,7 +1844,7 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[TbRegistro]" DisplayName="Para cada fila de la tabla de datos -  Obtener cantidad total de derivaciones" sap:VirtualizedContainerService.HintSize="304,51" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Para cada fila de la tabla de datos -  Obtener cantidad total de derivaciones" sap:VirtualizedContainerService.HintSize="304,51" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -1752,7 +1888,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[TbRegistro]" DisplayName="Buscar tabla de datos - Obtener cantidad de mails sin datos" sap:VirtualizedContainerService.HintSize="304,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="Mail" LookupValue="analisislegales@cartasur.com.ar" TargetColumnName="Cantidad">
+        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Buscar tabla de datos - Obtener cantidad de mails sin datos" sap:VirtualizedContainerService.HintSize="304,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="Mail" LookupValue="analisislegales@cartasur.com.ar" TargetColumnName="Cantidad">
           <ui:LookupDataTable.CellValue>
             <OutArgument x:TypeArguments="x:String">[CntMailsSinDatos]</OutArgument>
           </ui:LookupDataTable.CellValue>
@@ -1778,14 +1914,14 @@
                     <OutArgument x:TypeArguments="sd:DataTable" x:Key="TablaSalida">[TbCasillasDestino]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:BuildDataTable DataTable="[TbRegistro]" DisplayName="Crear tabla de datos - Registro" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_11" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Mail&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cantidad&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;ampliatorio@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;10&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;analisislegales@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;1&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;cheques@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;2&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;honorarios@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;2&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;integratitulo@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;3&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;liquidaciones-actualizaciones@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;4&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;oficios@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;8&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;sentencias@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;8&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
+                <ui:BuildDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Crear tabla de datos - Registro" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_11" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Mail&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cantidad&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;ampliatorio@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;10&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;analisislegales@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;1&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;cheques@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;2&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;honorarios@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;2&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;integratitulo@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;3&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;liquidaciones-actualizaciones@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;4&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;oficios@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;8&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Mail&gt;sentencias@cartasur.com.ar&lt;/Mail&gt;&#xA;    &lt;Cantidad&gt;8&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:BuildDataTable>
-                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[TbRegistro]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="JoinDataTables_5" JoinType="Left" OutputDataTable="[TbCasillasDestino]">
+                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="JoinDataTables_5" JoinType="Left" OutputDataTable="[TbCasillasDestino]">
                   <ui:JoinDataTables.Arguments>
                     <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
                       <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -1856,8 +1992,8 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{err.ToString}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - añadir error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_32" />
-                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_33" />
+                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{err.ToString}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - añadir error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_32" />
+                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_33" />
                               </Sequence>
                             </ActivityAction>
                           </ui:ForEach.Body>
@@ -1885,7 +2021,7 @@
                     </InArgument>
                   </ui:ExcelReadRange.Range>
                 </ui:ExcelReadRange>
-                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[TbMailsPorCasilla]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="JoinDataTables_6" JoinType="Left" OutputDataTable="[TbRegistro]">
+                <ui:JoinDataTables DataTable1="[TbCasillasDestino]" DataTable2="[TbMailsPorCasilla]" DisplayName="Unir tablas de datos" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="JoinDataTables_6" JoinType="Left" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]">
                   <ui:JoinDataTables.Arguments>
                     <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
                       <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -1899,7 +2035,7 @@
                     </scg:List>
                   </ui:JoinDataTables.Arguments>
                 </ui:JoinDataTables>
-                <ui:FilterDataTable DataTable="[TbRegistro]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[TbRegistro]" SelectColumnsMode="Remove">
+                <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" SelectColumnsMode="Remove">
                   <ui:FilterDataTable.Filters>
                     <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                       <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -1929,7 +2065,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - Salto de linea" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_34" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - Salto de linea" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_34" />
           <Assign DisplayName="Asignar - MailsSinDatos" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[CntMailsSinDatos]</OutArgument>
@@ -1938,9 +2074,9 @@
               <InArgument x:TypeArguments="x:String">[(IIf(string.IsNullOrEmpty(CntMailsSinDatos),"0",CntMailsSinDatos)).ToString()]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Mails derivados&quot;,CntTotalMails - Int32.Parse(CntMailsSinDatos)}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - Mails derivados" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_35" />
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Mails sin datos&quot;,CntMailsSinDatos}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - Mails sin datos" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_36" />
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Total de mails&quot;,CntTotalMails}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - total de mails" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_37" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Mails derivados&quot;,CntTotalMails - Int32.Parse(CntMailsSinDatos)}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - Mails derivados" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_35" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Mails sin datos&quot;,CntMailsSinDatos}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - Mails sin datos" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_36" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Total de mails&quot;,CntTotalMails}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - total de mails" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_37" />
         </Sequence>
         <Sequence DisplayName="Secuencia - agregar errores" sap:VirtualizedContainerService.HintSize="304,66" sap2010:WorkflowViewState.IdRef="Sequence_49">
           <sap:WorkflowViewStateService.ViewState>
@@ -1949,8 +2085,8 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - errores" sap:VirtualizedContainerService.HintSize="318,22" sap2010:WorkflowViewState.IdRef="AddDataRow_38" />
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Errores&quot;,ListaDeErrores.Count}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - cant errores" sap:VirtualizedContainerService.HintSize="318,22" sap2010:WorkflowViewState.IdRef="AddDataRow_39" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - errores" sap:VirtualizedContainerService.HintSize="318,22" sap2010:WorkflowViewState.IdRef="AddDataRow_38" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Errores&quot;,ListaDeErrores.Count}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - cant errores" sap:VirtualizedContainerService.HintSize="318,22" sap2010:WorkflowViewState.IdRef="AddDataRow_39" />
           <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="Para cada - lista de errores" sap:VirtualizedContainerService.HintSize="318,310" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[ListaDeErrores]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:Object">
@@ -1963,8 +2099,8 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{err.ToString}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - añadir error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_40" />
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_41" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{err.ToString}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - añadir error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_40" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[GlobalVariablesNamespace.GlobalVariables.TbRegistro]" DisplayName="Añadir fila de datos - salto de linea - error" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_41" />
                 </Sequence>
               </ActivityAction>
             </ui:ForEach.Body>
@@ -1985,6 +2121,39 @@
           </Assign.Value>
         </Assign>
       </Sequence>
+    </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">345,5</av:Point>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Obtener mensajes de correo IMAP" Email="robotmev@lprecupero.com.ar" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[mailspruebaImap]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Password="Sui-472-LP26" Port="993" SecureConnection="Auto" Server="imappro.zoho.com" Top="10">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetIMAPMailMessages>
+    </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">465,5</av:Point>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="test" DisplayName="Enviar mensaje de correo SMTP" Email="robotmev@lprecupero.com.ar" EnableSSL="True" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="False" Password="Sui-472-LP26" Port="465" SecureConnection="SslOnConnect" Server="smtppro.zoho.com" Subject="test" To="brandonrodriguezrb@gmail.com">
+        <ui:SendMail.Files>
+          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+        </ui:SendMail.Files>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:SendMail>
     </FlowStep>
   </Flowchart>
 </Activity>

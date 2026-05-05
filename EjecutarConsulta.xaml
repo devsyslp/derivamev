@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="EjecutarConsulta" this:EjecutarConsulta.DataSource="172.16.212.117" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="EjecutarConsulta" this:EjecutarConsulta.DataSource="172.16.212.117" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="Query" Type="InArgument(x:String)" />
     <x:Property Name="TablaSalida" Type="OutArgument(sd:DataTable)" />
@@ -7,7 +7,7 @@
   <sap:VirtualizedContainerService.HintSize>842.4,876.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <scg:List x:TypeArguments="x:String" Capacity="62">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>Microsoft.VisualBasic</x:String>
@@ -39,6 +39,7 @@
       <x:String>System.IO</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Database.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -80,10 +81,26 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Secuencia - EjecutarConsulta" sap:VirtualizedContainerService.HintSize="545.6,812" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Secuencia - EjecutarConsulta" sap:VirtualizedContainerService.HintSize="727,1665" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ConString" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="Conexion" />
@@ -94,7 +111,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="483.2,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ErrorQuery]</OutArgument>
       </Assign.To>
@@ -102,15 +119,15 @@
         <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="TryCatch - Obtener cadena de conexion" sap:VirtualizedContainerService.HintSize="483.2,24.8" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="TryCatch - Obtener cadena de conexion" sap:VirtualizedContainerService.HintSize="452,435" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ConexionStringDB" DisplayName="Obtener activo" sap:VirtualizedContainerService.HintSize="443.2,139.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+        <ui:GetRobotAsset AssetName="ConexionStringDB" DisplayName="Obtener activo" FolderPath="{x:Null}" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1" TimeoutMS="{x:Null}">
           <ui:GetRobotAsset.Value>
             <OutArgument x:TypeArguments="x:String">[ConString]</OutArgument>
           </ui:GetRobotAsset.Value>
@@ -139,8 +156,11 @@
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finalmente" sap2010:WorkflowViewState.IdRef="Sequence_8" />
+      </TryCatch.Finally>
     </TryCatch>
-    <ui:DatabaseConnect DisplayName="Connect - AbrirConexion" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="[ConString]" DatabaseConnection="[Conexion]">
+    <ui:DatabaseConnect DisplayName="Connect - AbrirConexion" sap:VirtualizedContainerService.HintSize="452,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionSecureString="{x:Null}" ConnectionString="[ConString]" DatabaseConnection="[Conexion]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -148,15 +168,18 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:DatabaseConnect>
-    <TryCatch DisplayName="TryCatch - GetMailsReceptores" sap:VirtualizedContainerService.HintSize="483.2,24.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="TryCatch - GetMailsReceptores" sap:VirtualizedContainerService.HintSize="452,477" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="sd:DataTable" Name="TablaSalida" />
+      </TryCatch.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:ExecuteQuery ContinueOnError="{x:Null}" CommandType="Text" DataTable="[TablaSalida]" DisplayName="Execute Query - get data table" ExistingDbConnection="[Conexion]" sap:VirtualizedContainerService.HintSize="333.6,89.6" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;Exec &quot; + Query]" TimeoutMS="10000">
+        <ui:ExecuteQuery CommandType="Text" ConnectionSecureString="{x:Null}" ConnectionString="{x:Null}" ContinueOnError="{x:Null}" DataTable="[TablaSalida]" DisplayName="Execute Query - get data table" ExistingDbConnection="[Conexion]" sap:VirtualizedContainerService.HintSize="348,93" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="{x:Null}" Sql="[&quot;Exec &quot; &amp; Query]" TimeoutMS="10000">
           <ui:ExecuteQuery.Parameters>
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:ExecuteQuery.Parameters>
@@ -180,7 +203,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="348,143" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[ErrorQuery]</OutArgument>
               </Assign.To>
@@ -192,10 +215,10 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <ui:DatabaseDisconnect DatabaseConnection="[Conexion]" DisplayName="Disconnect - CerrarConexion" sap:VirtualizedContainerService.HintSize="200,24.8" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+        <ui:DatabaseDisconnect DatabaseConnection="[Conexion]" DisplayName="Disconnect - CerrarConexion" sap:VirtualizedContainerService.HintSize="348,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
       </TryCatch.Finally>
     </TryCatch>
-    <If Condition="[Conexion.State.Value &lt;&gt; ConnectionState.Closed]" DisplayName="Si - Validar cierre conexion" sap:VirtualizedContainerService.HintSize="483.2,24.8" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[Conexion.State.Value &lt;&gt; ConnectionState.Closed]" DisplayName="Si - Validar cierre conexion" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -223,19 +246,19 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[not string.IsNullOrEmpty(ErrorQuery)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="483.2,324" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[not string.IsNullOrEmpty(ErrorQuery)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="452,406" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="416,134.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,182" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TerminateWorkflow DisplayName="Finalizar flujo de trabajo - GetMailsReceptores" sap:VirtualizedContainerService.HintSize="353.6,24.8" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="[ErrorQuery]" />
+          <TerminateWorkflow DisplayName="Finalizar flujo de trabajo - GetMailsReceptores" Exception="{x:Null}" sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="[ErrorQuery]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
